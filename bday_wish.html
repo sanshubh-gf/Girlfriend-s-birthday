@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Set your photo as background */
+            background: url('Sanskriti/7.jpg') no-repeat center center fixed;
+            background-size: cover; /* Makes the background cover the whole page */
+        }
+
+        .heart-container {
+            position: relative;
+            width: 300px;
+            height: 270px;
+            cursor: pointer;
+        }
+
+        .heart {
+            position: absolute;
+            width: 300px;
+            height: 270px;
+            background: red;
+            transform: rotate(-45deg);
+            transition: all 0.3s ease;
+            opacity: 0.8; /* Slightly transparent to show background */
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 270px;
+            background: red;
+            border-radius: 150px;
+            opacity: 0.8;
+        }
+
+        .heart:before {
+            top: -150px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 150px;
+            top: 0;
+        }
+
+        .content {
+            display: none;
+            position: absolute;
+            top: 320px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white for readability */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .content img {
+            max-width: 100px;
+            margin: 5px;
+        }
+
+        .heart-container:hover .heart {
+            transform: rotate(-45deg) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container" onclick="toggleContent()">
+        <div class="heart"></div>
+        <div class="content" id="content">
+            <p>Thank you for coming into my life unexpectedly like this, i love you baccha and i will improve to become best husband/bf one can be.</p>
+            <!-- Using remaining photos in content -->
+            <img src="Sanskriti/1.jpg">
+            <img src="Sanskriti/2.jpg">
+            <img src="Sanskriti/3.jpg">
+            <img src="Sanskriti/4.jpg">
+            <img src="Sanskriti/5.jpg">
+            <img src="Sanskriti/6.jpg">
+            <img src="Sanskriti/9.jpg">
+            <img src="Sanskriti/8.jpg">
+        </div>
+    </div>
+
+    <script>
+        function toggleContent() {
+            const content = document.getElementById('content');
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
