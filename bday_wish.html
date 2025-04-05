@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -8,9 +9,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Set your photo as background */
+            font-family: 'Pacifico', cursive;
             background: url("7.jpg") no-repeat center center fixed;
-            background-size: cover; /* Makes the background cover the whole page */
+            background-size: cover;
         }
 
         .heart-container {
@@ -26,8 +27,8 @@
             height: 270px;
             background: red;
             transform: rotate(-45deg);
-            transition: all 0.3s ease;
-            opacity: 0.8; /* Slightly transparent to show background */
+            opacity: 0.8;
+            animation: heartbeat 1.5s infinite;
         }
 
         .heart:before,
@@ -51,28 +52,64 @@
             top: 0;
         }
 
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.05);
+            }
+        }
+
         .content {
-            display: none;
+            max-height: 0;
+            overflow: hidden;
             position: absolute;
             top: 320px;
             left: 50%;
             transform: translateX(-50%);
             width: 400px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white for readability */
+            padding: 0 20px;
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: center;
+            transition: max-height 0.8s ease;
+        }
+
+        .content.show {
+            max-height: 1000px;
+            padding: 20px;
         }
 
         .content img {
             max-width: 100px;
             margin: 5px;
+            border-radius: 10px;
         }
 
-        .heart-container:hover .heart {
-            transform: rotate(-45deg) scale(1.1);
+        @media (max-width: 500px) {
+            .heart-container {
+                width: 200px;
+                height: 180px;
+            }
+
+            .heart,
+            .heart:before,
+            .heart:after {
+                width: 200px;
+                height: 180px;
+            }
+
+            .content {
+                width: 90%;
+                top: 250px;
+            }
+
+            .content img {
+                max-width: 80px;
+            }
         }
     </style>
 </head>
@@ -80,28 +117,24 @@
     <div class="heart-container" onclick="toggleContent()">
         <div class="heart"></div>
         <div class="content" id="content">
-            <p>Thank you for coming into my life unexpectedly like this, i love you baccha and i will improve to become best husband/bf one can be.</p>
-            <!-- Using remaining photos in content -->
-            <img src="1.jpg">
-            <img src="2.jpg">
-            <img src="3.jpg">
-            <img src="4.jpg">
-            <img src="5.jpg">
-            <img src="6.jpg">
-            <img src="9.jpg">
-            <img src="8.jpg">
+            <p>Thank you for coming into my life unexpectedly like this, I love you baccha and I will improve to become the best husband/bf one can be.</p>
+            <img src="1.jpg" alt="Photo 1">
+            <img src="2.jpg" alt="Photo 2">
+            <img src="3.jpg" alt="Photo 3">
+            <img src="4.jpg" alt="Photo 4">
+            <img src="5.jpg" alt="Photo 5">
+            <img src="6.jpg" alt="Photo 6">
+            <img src="9.jpg" alt="Photo 9">
+            <img src="8.jpg" alt="Photo 8">
         </div>
     </div>
 
     <script>
         function toggleContent() {
             const content = document.getElementById('content');
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
-            }
+            content.classList.toggle('show');
         }
     </script>
 </body>
 </html>
+
